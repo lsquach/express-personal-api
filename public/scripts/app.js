@@ -19,6 +19,27 @@ $(document).ready(function(){
       error: handleError
     });
 
+  $('#newSongForm').on('submit', function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: '/api/songs',
+      data: $(this).serialize(),
+      success: newSongSuccess,
+      error: newSongError
+    });
+  });
+
+$songsList.on('click', '.deleteBtn', function() {
+  console.log('clicked delete button to', '/api/songs/'+$(this).attr('data-id'));
+  $.ajax({
+    method: 'DELETE',
+    url: '/api/songs/'+$(this).attr('data-id'),
+    success: deleteSongSuccess,
+    error: deleteSongError
+  });
+});
+
 });
 
 function render () {
@@ -29,7 +50,7 @@ function render () {
   var songsHtml = template({ songs: allSongs });
 
   // append html to the view
-  $songsList.append(songsHtml);
+  $songsList.prepend(songsHtml);
 }
 
 function handleSuccess(json) {
@@ -40,6 +61,16 @@ function handleSuccess(json) {
 function handleError(e) {
   console.log('uh oh');
   $('#songTarget').text('Failed to load songs, is the server working?');
+}
+
+function newSongSuccess(json) {
+  $('#newSongForm input').val('');
+  allSongs.unshift(json);
+  render();
+}
+
+function newSongError() {
+  console.log('newsong error!');
 }
 
 function deleteSongSuccess(json) {
@@ -55,4 +86,8 @@ function deleteSongSuccess(json) {
     }
   }
   render();
+}
+
+function deleteSongError() {
+  console.log('deletesong error!');
 }

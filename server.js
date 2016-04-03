@@ -47,9 +47,9 @@ app.use(express.static('public'));
  * HTML Endpoints
  */
 
-app.get('/', function homepage(req, res) {
-  res.sendFile(__dirname + '/views/index.html');
-});
+ app.get('/', function (req, res) {
+   res.sendFile('views/index.html' , { root : __dirname});
+ });
 
 
 /*
@@ -60,12 +60,14 @@ app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below
   res.json({
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentation_url: "https://github.com/lsquach/express-personal-api", // CHANGE ME
-    base_url: "https://blueberry-surprise-52078.herokuapp.com/", // CHANGE ME
+    documentation_url: "https://github.com/lsquach/express-personal-api",
+    base_url: "https://blueberry-surprise-52078.herokuapp.com/",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/songs", description: "Add a 90s One Hit Wonder song"} // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "Data about me"},
+      {method: "GET", path: "/api/songs", description: "List of 90s One Hit Wonder songs"},
+      {method: "POST", path: "/api/songs", description: "Add 90s One Hit Wonder songs"},
+      {method: "GET", path: "/api/songs/:id", description: "Get one song "}
     ]
   });
 });
@@ -85,34 +87,39 @@ app.get('/api/songs', function (req, res) {
   });
 });
 
-// // get one song
-// app.get('/api/songs/:id', function (req, res) {
-//   db.Songs.findOne({_id: req.params._id }, function(err, data) {
-//     res.json(data);
-//   });
-// });
-//
-// // create new song
-// app.post('/api/songs', function (req, res) {
-//   // create new song with form data (`req.body`)
-//   console.log('songs create', req.body);
-//   var newSong = new db.Song(req.body);
-//   newSong.save(function handleDBSongSaved(err, savedSong) {
-//     res.json(savedSong);
-//   });
-// });
-//
-//
-// // delete song
-// app.delete('/api/songs/:id', function (req, res) {
-//   // get song id from url params (`req.params`)
-//   console.log('songs delete', req.params);
-//   var songId = req.params.id;
-//   // find the index of the song we want to remove
-//   db.Song.findOneAndRemove({ _id: songId }, function (err, deletedSong) {
-//     res.json(deletedSong);
-//   });
-// });
+//get one song
+app.get('/api/songs/:id', function (req, res) {
+  db.Songs.findOne({_id: req.params._id }, function(err, data) {
+    res.json(data);
+  });
+});
+
+// create new song
+app.post('/api/songs', function (req, res) {
+  // create new song with form data (`req.body`)
+  console.log('songs create', req.body);
+  var newSong = new db.Song(req.body);
+  newSong.save(function handleDBSongSaved(err, savedSong) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.json(savedSong);
+    }
+  });
+});
+
+
+// delete song
+app.delete('/api/songs/:id', function (req, res) {
+  // get song id from url params (`req.params`)
+  console.log('songs delete', req.params);
+  var songId = req.params.id;
+  // find the index of the song we want to remove
+  db.Song.findOneAndRemove({ _id: songId }, function (err, deletedSong) {
+    res.json(deletedSong);
+  });
+});
 
 /**********
  * SERVER *
