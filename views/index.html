@@ -21,7 +21,18 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
+          <div id="songTarget">
+            <script id="songs-template" type="text/x-handlebars-template">
+            {{#each songs}}
+            <hr>
+            <p>
+              <b>{{song}}</b>
+              by {{artist}}
+              <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
+            </p>
+            {{/each}}
+          </script>
+          </div>
           <h4><a href="/api">Read My API Documentation</a></h4>
         </div>
       </div>
