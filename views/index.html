@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Blank</title>
+    <title>90s One Hit Wonders</title>
 
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -33,7 +33,7 @@
           <div class="form-group">
             <input type="text" class="form-control" name="link" placeholder="YouTube Embedded Link">
           </div>
-          <button type="submit" class="btn btn-default">Add</button>
+          <button type="submit" class="btn btn-info">Add</button>
         </form>
           <div id="songTarget">
             <script id="songs-template" type="text/x-handlebars-template">
@@ -44,7 +44,7 @@
               by {{artist}}
               <br>
               <iframe width="560" height="340" src="{{link}}" frameborder="0"></iframe>
-              <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
+              <button type="button" name="button" class="deleteBtn btn btn-warning pull-right" data-id={{_id}}>Delete</button>
             </p>
             {{/each}}
           </script>

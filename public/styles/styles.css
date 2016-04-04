@@ -13,6 +13,9 @@ h1 {
   width: 83%;
   margin: 0 auto;
 }
+.btn {
+  font-family: 'Josefin Sans', sans-serif;
+}
 #songTarget {
   font-size: 20px;
 }
