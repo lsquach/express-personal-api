@@ -90,10 +90,11 @@ app.get('/api/songs', function (req, res) {
 
 //get one song
 app.get('/api/songs/:id', function (req, res) {
-  db.Songs.findOne({_id: req.params._id }, function(err, data) {
+  db.Song.findOne({_id: req.params.id }, function(err, data) {
     res.json(data);
   });
 });
+
 
 // create new song
 app.post('/api/songs', function (req, res) {
