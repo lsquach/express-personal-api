@@ -4,8 +4,8 @@ var template;
 var $songsList;
 var allSongs = [];
 
-$(document).ready(function(){
 
+$(document).ready(function(){
   $songsList = $('#songTarget');
 
     // compile handlebars template

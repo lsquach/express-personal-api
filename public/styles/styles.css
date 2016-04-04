@@ -1,10 +1,21 @@
 body {
   color: white;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   background-color: gray;
 }
 
 h1 {
   margin-top: 100px;
   text-align: center;
+}
+.form-inline {
+  font-family: Helvetica, Arial, sans-serif;
+  width: 83%;
+  margin: 0 auto;
+}
+#songTarget {
+  font-size: 20px;
+}
+a {
+  color: white;
 }

@@ -66,8 +66,9 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"},
       {method: "GET", path: "/api/songs", description: "List of 90s One Hit Wonder songs"},
-      {method: "POST", path: "/api/songs", description: "Add 90s One Hit Wonder songs"},
-      {method: "GET", path: "/api/songs/:id", description: "Get one song "}
+      {method: "POST", path: "/api/songs", description: "Add 90s One Hit Wonders"},
+      {method: "GET", path: "/api/songs/:id", description: "Get one song"},
+      {method: "DELETE", path: "/api/songs/:id", description: "Delete one song"}
     ]
   });
 });

@@ -9,6 +9,7 @@
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 
     <!-- VENDOR SCRIPTS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -29,6 +30,9 @@
           <div class="form-group">
             <input type="text" class="form-control" name="artist" placeholder="Artist">
           </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="link" placeholder="YouTube Embedded Link">
+          </div>
           <button type="submit" class="btn btn-default">Add</button>
         </form>
           <div id="songTarget">
@@ -38,11 +42,14 @@
             <p>
               <b>{{song}}</b>
               by {{artist}}
+              <br>
+              <iframe width="560" height="340" src="{{link}}" frameborder="0"></iframe>
               <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id={{_id}}>Delete</button>
             </p>
             {{/each}}
           </script>
           </div>
+          <hr>
           <h4><a href="/api">Read My API Documentation</a></h4>
         </div>
       </div>
