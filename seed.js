@@ -72,8 +72,8 @@ var songs_list = [
   releaseDate: "July 26, 1997"
   },
   {
-  song: "Harvey Danger",
-  artist: "Flagpole Sitta",
+  song: "Flagpole Sitta",
+  artist: "Harvey Danger",
   link: "https://www.youtube.com/embed/wYsMjEeEg4g",
   releaseDate: "August 22, 1998"
   },
